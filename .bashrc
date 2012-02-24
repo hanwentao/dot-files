@@ -8,6 +8,9 @@ PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
 if [ -n "$(which brew)" ]; then
     PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+        . "$(brew --prefix)/etc/bash_completion"
+    fi
 fi
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
@@ -33,8 +36,4 @@ if [ -n "$(which dircolors)" ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-fi
-
-if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    . "$(brew --prefix)/etc/bash_completion"
 fi
