@@ -9,4 +9,5 @@ endif
 
 colorscheme desert
 
+set clipboard=unnamed
 set mouse=a
