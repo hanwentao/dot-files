@@ -75,9 +75,16 @@ else
   set autoindent
 endif
 if has("persistent_undo")
-  set autowrite
-  set undodir=~/.undo
-  set undofile
+  let undo_dir = expand("~/.undo")
+  if !isdirectory(undo_dir) && exists("*mkdir")
+    call mkdir(undo_dir)
+  endif
+  if isdirectory(undo_dir)
+    set autowrite
+    set undodir=undo_dir
+    set undofile
+    set nobackup
+  endif
 endif
 
 " Miscellaneous settings
