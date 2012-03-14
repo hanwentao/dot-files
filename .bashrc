@@ -6,6 +6,9 @@
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
+if [ -f "/etc/bash_completion" ] && ! shopt -oq posix; then
+    . "/etc/bash_completion"
+fi
 if [ -n "$(which brew)" ]; then
     PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
     if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
