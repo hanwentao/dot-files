@@ -81,7 +81,7 @@ if has("persistent_undo")
   endif
   if isdirectory(undo_dir)
     set autowrite
-    set undodir=undo_dir
+    let &undodir = undo_dir
     set undofile
     set nobackup
   endif
