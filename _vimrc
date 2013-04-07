@@ -8,18 +8,11 @@ endif
 set nocompatible
 
 " Set up Vundle
-filetype off
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+"filetype off
+"set runtimepath+=~/.vim/bundle/vundle/
+"call vundle#rc()
 
-Bundle "gmarik/vundle"
-
-Bundle "taglist.vim"
-Bundle "The-NERD-Commenter"
-Bundle "cscope_macros.vim"
-Bundle "clang-complete"
-Bundle "LaTeX-Suite-aka-Vim-LaTeX"
-Bundle "VimOrganizer"
+"Bundle "gmarik/vundle"
 
 " Display related settings
 set background=dark
@@ -75,7 +68,7 @@ else
   set autoindent
 endif
 if has("persistent_undo")
-  let undo_dir = expand("~/.undo")
+  let undo_dir = expand("~/.vim-undo")
   if !isdirectory(undo_dir) && exists("*mkdir")
     call mkdir(undo_dir)
   endif
@@ -100,15 +93,3 @@ if !exists(":DiffOrig")
 endif
 
 " Extension settings
-let g:bash=1
-
-nnoremap <Leader>t :TlistToggle<CR>
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_Right_Window=1
-
-let g:clang_complete_macros=1
-let g:clang_snippets=1
-let g:clang_sort_algo="alpha"
-
-autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-autocmd BufEnter *.org call org#SetOrgFileType()
