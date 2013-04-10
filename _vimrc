@@ -93,3 +93,4 @@ if !exists(":DiffOrig")
 endif
 
 " Extension settings
+let g:is_bash=1
