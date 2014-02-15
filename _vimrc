@@ -23,6 +23,7 @@ set list
 set listchars=tab:>\ ,trail:.
 set matchtime=1
 set number
+set relativenumber
 set ruler
 set scrolloff=3
 set showcmd
@@ -36,11 +37,8 @@ endif
 
 " Operation related settings
 set backspace=indent,eol,start
-set gdefault
 set history=50
-set ignorecase
 set incsearch
-set smartcase
 if has("mouse")
   set mouse=
 endif

@@ -1,67 +1,85 @@
-# .bashrc: Bash configuration file
+# .bashrc: Bash profile file for non-login session
 # Wentao Han (wentao.han@gmail.com)
 
-# XXX: Fix TERM variable to support 256-color mode for GNOME Terminal
-if [ "$COLORTERM" == "gnome-terminal" ]; then
-    export TERM="xterm-256color"
-fi
-
-[ -z "$PS1" ] && return
+# Set the prompt
 
 _update_ps1() {
-    # prompt, in red if an error occurred in last command
-    if [ $? -eq 0 ]; then
-        PROMPT='\$'
-    else
-        PROMPT='\[\e[1;31m\]\$\[\e[0m\]'
-    fi
-    # username@hostname in green
-    USER_HOST_NAMES='\[\e[1;32m\]\u@\h\[\e[0m\]'
-    # relative current working directory in blue
-    WORKING_DIR='\[\e[1;34m\]\w\[\e[0m\]'
-    # title in terminal emulator
-    if [ "$TERM" != "linux" ]; then
-        TERM_TITLE='\[\e]0;\u@\h: \w\a\]'
-    else
-        TERM_TITLE=''
-    fi
-    # finally, combine them all
-    PS1="$TERM_TITLE$USER_HOST_NAMES:$WORKING_DIR$PROMPT "
+  # Prompt, in red if an error occurred in last command
+  if [ $? -eq 0 ]; then
+    PROMPT='\$'
+  else
+    PROMPT='\[\e[1;31m\]\$\[\e[0m\]'
+  fi
+  # username@hostname in green
+  USER_HOST_NAMES='\[\e[1;32m\]\u@\h\[\e[0m\]'
+  # Relative current working directory in blue
+  WORKING_DIR='\[\e[1;34m\]\w\[\e[0m\]'
+  # Title in terminal emulator
+  if [[ "$TERM" == xterm* ]]; then
+    TERM_TITLE='\[\e]0;\u@\h: \w\a\]'
+  else
+    TERM_TITLE=''
+  fi
+  # Finally, combine them all
+  PS1="$TERM_TITLE$USER_HOST_NAMES:$WORKING_DIR$PROMPT "
 }
 
-export PROMPT_COMMAND="_update_ps1"
+PROMPT_COMMAND="_update_ps1"
 
-if [ -f "/etc/bash_completion" ] && ! shopt -oq posix; then
-    . "/etc/bash_completion"
-fi
-if [ -n "$(which brew 2>/dev/null)" ]; then
-    PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-        . "$(brew --prefix)/etc/bash_completion"
-    fi
-fi
+# Set search paths
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
+  PATH="$HOME/bin:$PATH"
 fi
+
+export PATH MANPATH
+
+# Set up locale
+
+export LANG="en_US.UTF-8"
+
+# Set up bash-completion
+
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  . "$(brew --prefix)/etc/bash_completion"
+fi
+
+# Set up lesspipe
+
+if [ -n "$(which lesspipe.sh)" ]; then
+  eval "$(lesspipe.sh)"
+  export LESS="-R"
+  export LESSQUIET="true"
+fi
+
+# History and other settings
 
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
-export EDITOR=$(which vim 2>/dev/null)
 
 shopt -s histappend
 shopt -s checkwinsize
 set -o vi
 
-[ -n "$(which lesspipe 2>/dev/null)" ] && eval "$(lesspipe)"
-[ -n "$(which lesspipe.sh 2>/dev/null)" ] && eval "$(lesspipe.sh)"
+export EDITOR="$(which vim)"
 
-if [ -n "$(which dircolors 2>/dev/null)" ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+# Color settings
+
+if [ -n "$(which dircolors)" ]; then
+  if [ -r ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
+  alias ls="ls --color=auto"
+  alias dir="dir --color=auto"
+  alias vdir="vdir --color=auto"
+  alias grep="grep --color=auto"
+  alias fgrep="fgrep --color=auto"
+  alias egrep="egrep --color=auto"
 fi
