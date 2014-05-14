@@ -26,6 +26,8 @@ for conf_file in $CONF_FILE_LIST; do
   if [[ "$visible_conf_file" == *-macosx && "$os_type" != Darwin ]]; then
     echo "Skipping $visible_conf_file"
     continue
+  else
+    conf_file="${conf_file%-macosx}"
   fi
   conf_path="$HOME/$conf_file"
   backup_conf_path="$backup_path/$conf_file"
