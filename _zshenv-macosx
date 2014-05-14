@@ -1,0 +1,2 @@
+fpath=(/usr/local/share/zsh-completions $fpath)
+export JAVA_HOME=$(/usr/libexec/java_home)

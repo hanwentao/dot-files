@@ -1,6 +1,0 @@
-# .bash_profile: Bash profile file
-# Wentao Han (wentao.han@gmail.com)
-
-if [ -f "$HOME/.bashrc" ]; then
-  . "$HOME/.bashrc"
-fi
