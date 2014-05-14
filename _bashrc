@@ -1,42 +1,29 @@
 # .bashrc: Bash profile file for non-login session
 # Wentao Han (wentao.han@gmail.com)
 
-# Set the prompt
-
-_update_ps1() {
-  # Prompt, in red if an error occurred in last command
-  if [ $? -eq 0 ]; then
-    PROMPT='\$'
-  else
-    PROMPT='\[\e[1;31m\]\$\[\e[0m\]'
-  fi
-  # username@hostname in green
-  USER_HOST_NAMES='\[\e[1;32m\]\u@\h\[\e[0m\]'
-  # Relative current working directory in blue
-  WORKING_DIR='\[\e[1;34m\]\w\[\e[0m\]'
-  # Title in terminal emulator
-  if [[ "$TERM" == xterm* ]]; then
-    TERM_TITLE='\[\e]0;\u@\h: \w\a\]'
-  else
-    TERM_TITLE=''
-  fi
-  # Finally, combine them all
-  PS1="$TERM_TITLE$USER_HOST_NAMES:$WORKING_DIR$PROMPT "
-}
-
-PROMPT_COMMAND="_update_ps1"
-
 # Set search paths
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+if [ -d "/usr/texbin" ]; then
+  PATH="/usr/texbin:$PATH"
+fi
+
+if [ -d "$HOME/Library/Python/2.7/bin" ]; then
+  PATH="$HOME/Library/Python/2.7/bin:$PATH"
+fi
+
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
 
 export PATH MANPATH
+
+# Set up prompt using powerline
+
+. "$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh"
 
 # Set up locale
 

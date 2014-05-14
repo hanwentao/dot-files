@@ -3,3 +3,5 @@
 	email = wentao.han@gmail.com
 [color]
 	ui = auto
+[push]
+	default = simple

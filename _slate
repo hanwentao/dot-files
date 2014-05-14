@@ -6,10 +6,10 @@ config resizePercentOf screenSize
 
 # Miscellaneous
 bind esc:cmd hint
-bind [:shift;cmd undo
-bind ]:shift;cmd relaunch
-bind =:shift;cmd grid 1440x900:8,5 1920x1080:16,9
-bind -:shift;cmd move (screenSizeX-windowSizeX)/2;(screenSizeY-windowSizeY)/2 windowSizeX;windowSizeY
+bind [:ctrl;cmd undo
+bind ]:ctrl;cmd relaunch
+bind =:ctrl;cmd grid 2560x1600:8,5 1920x1080:16,9
+bind -:ctrl;cmd move (screenSizeX-windowSizeX)/2;(screenSizeY-windowSizeY)/2 windowSizeX;windowSizeY
 
 # Useful positions
 bind right:shift;cmd push right bar-resize:screenSizeX/2
@@ -34,3 +34,6 @@ bind    up:alt;shift;cmd resize +0 +10% bottom-right
 bind  down:alt;shift;cmd resize +0 -10% bottom-right
 
 # TODO(hanwentao): Move the current window to another screen
+
+# Global function keys
+#bind backslash:ctrl;cmd shell path:~/bin '/Users/hanwentao/bin/toggle-vpn DigitalOcean'

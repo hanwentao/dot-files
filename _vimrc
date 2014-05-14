@@ -8,11 +8,18 @@ endif
 set nocompatible
 
 " Set up Vundle
-"filetype off
-"set runtimepath+=~/.vim/bundle/vundle/
-"call vundle#rc()
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-"Bundle "gmarik/vundle"
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'Tagbar'
+Plugin 'The-NERD-Commenter'
+Plugin 'The-NERD-tree'
+
+call vundle#end()
+filetype plugin indent on
 
 " Display related settings
 set background=dark
@@ -53,7 +60,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=8
 if has("autocmd")
-  filetype plugin indent on
   augroup vimrcEx
     autocmd!
     autocmd FileType text setlocal textwidth=78
@@ -92,3 +98,6 @@ endif
 
 " Extension settings
 let g:is_bash=1
+
+nnoremap <Leader>t :TagbarToggle<CR>
+nnoremap <Leader>d :NERDTreeToggle<CR>
