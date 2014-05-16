@@ -48,7 +48,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump brew git zsh-syntax-highlighting)
+plugins=(autojump brew git vi-mode zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,3 +75,14 @@ export EDITOR=vim
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Fix and improve vi mode behavior
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+bindkey '^S' history-incremental-search-forward
+bindkey '^R' history-incremental-search-backward
+KEYTIMEOUT=1
