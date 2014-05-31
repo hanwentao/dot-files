@@ -17,6 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Tagbar'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -97,7 +98,8 @@ if !exists(":DiffOrig")
 endif
 
 " Extension settings
-let g:is_bash=1
+let g:is_bash = 1
+let g:ycm_confirm_extra_conf = 0
 
 nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>d :NERDTreeToggle<CR>
