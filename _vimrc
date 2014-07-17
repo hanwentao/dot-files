@@ -18,6 +18,9 @@ Plugin 'Tagbar'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -100,6 +103,10 @@ endif
 " Extension settings
 let g:is_bash = 1
 let g:ycm_confirm_extra_conf = 0
+let g:ctrlp_map = ''
+let g:ctrlp_extensions = ['buffertag']
 
-nnoremap <Leader>t :TagbarToggle<CR>
-nnoremap <Leader>d :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>s :CtrlPBufTag<CR>
+nnoremap <silent> <Leader>f :CtrlP<CR>
