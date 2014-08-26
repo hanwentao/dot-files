@@ -109,4 +109,5 @@ let g:ctrlp_extensions = ['buffertag']
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>s :CtrlPBufTag<CR>
+nnoremap <silent> <Leader>g :CtrlPTag<CR>
 nnoremap <silent> <Leader>f :CtrlP<CR>
