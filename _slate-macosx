@@ -5,7 +5,7 @@ config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
 # Miscellaneous
-bind esc:ctrl hint
+bind esc:cmd hint
 bind [:ctrl;cmd undo
 bind ]:ctrl;cmd relaunch
 bind =:ctrl;cmd grid 2560x1440:16,9 1920x1200:16,10 1920x1080:16,9 1280x800:8,5
@@ -34,4 +34,5 @@ bind    up:alt;shift;cmd resize +0 +10% bottom-right
 bind  down:alt;shift;cmd resize +0 -10% bottom-right
 
 # Throw
-bind backslash:shift;cmd throw next
+bind backslash:shift;cmd throw next resize
+bind backslash:alt;shift;cmd throw next
