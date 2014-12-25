@@ -17,7 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Tagbar'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
@@ -34,7 +33,6 @@ set list
 set listchars=tab:>\ ,trail:.
 set matchtime=1
 set number
-set relativenumber
 set ruler
 set scrolloff=3
 set showcmd
