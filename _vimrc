@@ -21,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -101,13 +102,16 @@ if !exists(":DiffOrig")
 endif
 
 " Extension settings
-let g:is_bash = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ctrlp_map = ''
 let g:ctrlp_extensions = ['buffertag']
+let g:ctrlp_map = ''
+let g:is_bash = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = $HOME . "/.vim/ycm_global_conf.py"
 
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>s :CtrlPBufTag<CR>
 nnoremap <silent> <Leader>g :CtrlPTag<CR>
-nnoremap <silent> <Leader>f :CtrlP<CR>
+nnoremap <silent> <Leader>f :CtrlPMRU<CR>
